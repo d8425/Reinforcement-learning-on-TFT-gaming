@@ -1,0 +1,5 @@
+numpy==1.24.3
+torch==2.0.0
+gym==0.26.2
+PyYAML==6.0.1
+cryptography==41.0.3  # 用于YAML配置编码
