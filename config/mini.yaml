@@ -1,0 +1,37 @@
+device: cuda
+# 1. 训练超参（补上缺失段）
+train:
+  mixed_precision: false
+  total_episodes: 500
+  batch_size: 64
+  lr: 3.0e-4
+  collect_steps: 128
+  update_epochs: 4
+  gamma: 0.99
+  clip_eps: 0.2
+  lambda: 0.95
+  test_interval: 50
+  save_dir: checkpoints
+  model_hidden: 256
+
+# 2. 环境维度
+env:
+  input_fields: [hp, ifwin, gold, extra, state_num, star]
+  shop_size: 5
+  selectable_heros: [b,b,a,e,g]
+
+# 3. 静态数据
+data:
+  heroes:
+    a: { cost: 1, traits: [1] }
+    b: { cost: 1, traits: [2] }
+    c: { cost: 2, traits: [3] }
+    d: { cost: 3, traits: [1] }
+    e: { cost: 2, traits: [1,2] }
+    f: { cost: 3, traits: [2] }
+    g: { cost: 4, traits: [3] }
+
+  traits:
+    1: { levels: [2,4,6] }
+    2: { levels: [2,3] }
+    3: { levels: [3,5] }
